@@ -1,5 +1,6 @@
 import React from "react";
-import logo from "./user.png"
+import userIcon from "./userIcon.png"
+import logo from "./logo.png"
 import './index.css'
 
 
@@ -17,7 +18,7 @@ const Navbar = () => {
           <button type="submit">Search</button>
         </div>
         <div className="icon">
-            <h1 className="hedding">REACT</h1>
+            <img src={userIcon} alt="" srcset="" className="userIcon" />
         </div>
       </div>
     </>

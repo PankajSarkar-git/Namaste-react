@@ -31,8 +31,7 @@
     /* padding-bottom: 0.2rem; */
     border: none;
 }
-.hedding{
-    font-size: 3rem;
+.userIcon{
+    height: 3rem;
     color: rgb(30, 45, 210);
-    letter-spacing: 2px;
 }
