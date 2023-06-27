@@ -1,0 +1,134 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* 
+.navbar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(23, 18, 18);
+    padding: 1rem;
+}
+.logo-img{
+    height: 3.5rem;
+}
+.search{
+    font-size: 1rem;
+}
+.search input{
+    width: 80vh;
+    height: 5vh;
+    border-radius: 10px 0px 0px 10px;
+    border: none;
+}
+.search button{
+    width: 15vh;
+    height: 5vh;
+    border-radius: 0px 10px 10px 0px;
+    background-color:rgb(0, 134, 161);
+    color: black;
+    font-size: 0.8rem;
+    padding-bottom: 0.2rem;
+     border: none;
+ }
+.userIcon{
+    height: 3rem;
+    color: rgb(30, 45, 210);
+}  */
+
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    border: 2px solid black;
+}
+
+.nav-bar>div>.logo {
+    width: 6rem;
+}
+
+.nav-bar>ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-bar>ul>li {
+    list-style-type: none;
+    margin: 1rem 2rem;
+    font-size: 1.2rem;
+
+}
+
+.cantainer {
+    margin-top: 2rem;
+}
+
+.search {
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+}
+
+.search>input {
+    width: 50vh;
+    height: 5vh;
+    border-radius: 10px 0px 0px 10px;
+
+}
+
+.search>button {
+    width: 15vh;
+    height: 5.4vh;
+    border-radius: 0px 10px 10px 0px;
+    background-color: rgb(0, 134, 161);
+    color: black;
+    font-size: 0.8rem;
+    padding-bottom: 0.2rem;
+
+}
+
+.card {
+    height: inherit;
+    width: 20rem;
+    margin: 1rem;
+    padding: 0.4rem;
+}
+
+.card:hover {
+    border: 2px solid black;
+}
+
+.card>.card-img {
+    width: 100%;
+}
+
+.card-cantainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.funtion-container{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.filter-btn{
+    padding: 1rem 2rem;
+    margin: 1rem;
+  font-size: 1.2rem;
+  color: blue;
+  background-color: aqua;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+.filter-btn:hover{
+    background-color: blue;
+    color: aqua;
+    border: 1px solid black;
+}
