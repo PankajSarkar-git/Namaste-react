@@ -1,67 +1,33 @@
 import React, { useEffect, useState } from "react";
-import resList from "../utills/mockData";
 import ResturantCard from "./ResturantCard";
-import resList from "../utills/mockData";
+import ShimmerUi from "./ShimmerUi";
 
-const Resturant = () => {
-  const [resturentList, setResturentList] = useState(resList);
-  //   const [inputItem, setInputItem] = useState(resList);
-  const [inputValue, setInputValue] = useState("");
-  useEffect(()=>{
-    setResturentList(resList);
-  } ,[inputValue])
+const Resturant = ({ data, setData, resturentList, setResturentList }) => {
+  const fatchData = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.572646&lng=88.36389500000001&page_type=DESKTOP_WEB_LISTING"
+    );
+    const jsonData = await data.json();
+    // console.log(jsonData);
 
-  const inputData = (e) => {
-    const input = e.target.value;
-    const search = input.charAt(0).toUpperCase() + input.slice(1);
-    console.log(search);
-    setInputValue(search);
+    //optional chaining
+    setResturentList(jsonData?.data?.cards[2]?.data?.data?.cards);
+    setData(jsonData?.data?.cards[2]?.data?.data?.cards);
   };
-  const search = () => {
-   setResturentList(resturentList.filter((item) => item.data.cuisines.includes(inputValue)));
-  };
-  return (
+  useEffect(() => {
+    fatchData();
+  }, []);
+
+  // conditional Rendering
+  // if (resturentList.length === 0) {
+  //   return <ShimmerUi />;
+  // }
+  return resturentList.length === 0 ? (
+    <ShimmerUi />
+  ) : (
     <div className="cantainer">
-      <div className="funtion-container">
-        <div className="search">
-          <input
-            type="text"
-            name=""
-            id=""
-            placeholder="Search...."
-            value={inputValue}
-            onChange={inputData}
-          />
-          <button type="submit" onClick={search}>
-            Search
-          </button>
-        </div>
-        <div className="options">
-          <button
-            type="button"
-            className="filter-btn"
-            onClick={() => {
-              setResturentList(
-                resturentList.filter((res) => res.data.avgRating > 4)
-              );
-            }}
-          >
-            Top Rated Resturant
-          </button>
-          <button
-            type="button"
-            className="filter-btn"
-            onClick={() => {
-              setResturentList(resList);
-            }}
-          >
-            All
-          </button>
-        </div>
-      </div>
-
       <div className="card-cantainer">
-        {resturentList.map((restaurant) => {
+        {data.map((restaurant) => {
           return (
             <ResturantCard resList={restaurant} key={restaurant.data.id} />
           );

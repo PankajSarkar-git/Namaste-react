@@ -63,6 +63,14 @@
 
 }
 
+.nav-bar>ul>.log-buttton {
+    padding: 0.7rem 2rem;
+    font-size: 1.2rem;
+    color: black;
+    background-color: rgb(24, 219, 24);
+    cursor: pointer;
+}
+
 .cantainer {
     margin-top: 2rem;
 }
@@ -111,24 +119,64 @@
     justify-content: center;
     align-items: center;
 }
-.funtion-container{
+
+.funtion-container {
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-top: 2rem;
 }
 
-.filter-btn{
+.filter-btn {
     padding: 1rem 2rem;
     margin: 1rem;
-  font-size: 1.2rem;
-  color: blue;
-  background-color: aqua;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
+    font-size: 1.2rem;
+    color: blue;
+    background-color: aqua;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
 }
-.filter-btn:hover{
+
+.filter-btn:hover {
     background-color: blue;
     color: aqua;
     border: 1px solid black;
+}
+
+.top-container {
+    height: 14vh;
+    background-color: gray;
+    opacity: 0.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 4.2rem;
+    border-radius: 5px;
+    margin-top: 2rem;
+
+}
+
+.top-container>h1 {
+    font-size: 2rem;
+    opacity: 0.5;
+
+}
+
+.shimmer-card {
+    height: 18rem;
+    width: 20rem;
+    background-color: gray;
+    margin: 1rem;
+    opacity: 0.5;
+    border-radius: 5px;
+}
+
+.shimmer-container {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
 }
