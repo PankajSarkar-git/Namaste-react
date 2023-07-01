@@ -1,38 +1,49 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
-import Resturant from "./components/Resturant";
-import UpperBody from "./components/UpperBody";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Errors from "./components/Errors";
+import Body from "./components/Body";
+import ResturantMenu from './components/ResturantMenu';
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 const AppLayOut = () => {
-  const [resturentList, setResturentList] = useState([]);
-  const [data, setData] = useState([]);
-  const [searchText, setSearchText] = useState("");
 
-
-
+  
   return (
     <div className="app">
       <Header />
-      <UpperBody
-        setSearchText={setSearchText}
-        searchText={searchText}
-        data={data}
-        setData={setData}
-        resturentList={resturentList}
-        setResturentList={setResturentList}
-      />
-      <Resturant
-        setSearchText={setSearchText}
-        searchText={searchText}
-        data={data}
-        resturentList={resturentList}
-        setResturentList={setResturentList}
-        setData={setData}
-      />
+      <Outlet />
     </div>
   );
 };
 
+const routApp = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayOut />,
+    children: [
+      {
+        path: "/",
+        element: <Body/>
+        },
+      {
+        path: "/About",
+        element: <About />,
+      },
+      {
+        path: "/Contact",
+        element: <Contact />,
+      },
+      {
+        path: "/Resturants/:resId",
+        element: <ResturantMenu />,
+      },
+    ],
+    errorElement: <Errors />,
+  },
+]);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayOut />);
+root.render(<RouterProvider router={routApp} />);

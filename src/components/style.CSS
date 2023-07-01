@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+/* .container-card{
+    background-color: rgb(217, 214, 214);
+    padding: 0rem 1.2rem ;
+    width: 70vw;
+    
+}
+.container-card > h1{
+    color: rgb(7, 80, 133);
+    
+} */
+
+.container {
+    width: 80vw;
+    border: 1px solid gray;
+    background-color: #f0f0f0;
+    padding: 1rem;
+    margin: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.offer-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.offer-card {
+    background-color: rgb(75, 66, 66);
+    width: 17%;
+    border: 1px solid black;
+    margin: 1rem 0;
+    cursor: pointer;
+    border-radius: 15px;
+    padding: 1rem;
+    color:whitesmoke;
+}
+
+.offer-card > h3 , .offer-card > p{
+    padding: 0.2rem;
+}
+
+.offer-card:hover {
+   background-color: rgb(54, 91, 91);
+}
+
+.container > .left-side > #img-food{
+    width: 15rem ;
+    padding: 0.5rem;
+}
+.container > .right-side > h3{
+    font-size: 1.4rem;
+    margin: 0.7rem;
+    color: rgb(7, 110, 133);
+}
+.container > .right-side > p {
+    margin: 0.5rem;
+    font-size: 1.2rem;
+}
+.container > .right-side > .price{
+    color: blue;
+}

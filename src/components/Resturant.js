@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ResturantCard from "./ResturantCard";
 import ShimmerUi from "./ShimmerUi";
+import { Link } from "react-router-dom";
 
 const Resturant = ({ data, setData, resturentList, setResturentList }) => {
   const fatchData = async () => {
@@ -29,7 +30,7 @@ const Resturant = ({ data, setData, resturentList, setResturentList }) => {
       <div className="card-cantainer">
         {data.map((restaurant) => {
           return (
-            <ResturantCard resList={restaurant} key={restaurant.data.id} />
+            <Link to={"/Resturants/"+restaurant.data.id} key={restaurant.data.id}><ResturantCard resList={restaurant}  /></Link>
           );
         })}
       </div>
