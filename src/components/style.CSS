@@ -9,16 +9,7 @@
     align-items: center;
     flex-direction: column;
 }
-/* .container-card{
-    background-color: rgb(217, 214, 214);
-    padding: 0rem 1.2rem ;
-    width: 70vw;
-    
-}
-.container-card > h1{
-    color: rgb(7, 80, 133);
-    
-} */
+
 
 .container {
     width: 80vw;
@@ -44,30 +35,39 @@
     cursor: pointer;
     border-radius: 15px;
     padding: 1rem;
-    color:whitesmoke;
+    color: whitesmoke;
 }
 
-.offer-card > h3 , .offer-card > p{
+.offer-card>h3,
+.offer-card>p {
     padding: 0.2rem;
 }
 
 .offer-card:hover {
-   background-color: rgb(54, 91, 91);
+    background-color: rgb(54, 91, 91);
 }
 
-.container > .left-side > #img-food{
-    width: 15rem ;
+.container>.left-side>#img-food {
+    width: 15rem;
     padding: 0.5rem;
 }
-.container > .right-side > h3{
+
+.container>.right-side>h3 {
     font-size: 1.4rem;
     margin: 0.7rem;
     color: rgb(7, 110, 133);
 }
-.container > .right-side > p {
+
+.container>.right-side>p {
     margin: 0.5rem;
     font-size: 1.2rem;
 }
-.container > .right-side > .price{
+
+.container>.right-side>.price {
     color: blue;
+}
+
+.user-card{
+    padding: 1rem;
+    border: 1px solid black;
 }

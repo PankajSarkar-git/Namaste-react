@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import ResturantCard from "./ResturantCard";
+import RestaurantCard from "./RestaurantCard";
 import ShimmerUi from "./ShimmerUi";
 import { Link } from "react-router-dom";
 
-const Resturant = ({ data, setData, resturentList, setResturentList }) => {
+const Restaurant = ({ data, setData, restaurentList, setRestaurentList }) => {
+
+
   const fatchData = async () => {
     const data = await fetch(
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.572646&lng=88.36389500000001&page_type=DESKTOP_WEB_LISTING"
@@ -12,7 +14,7 @@ const Resturant = ({ data, setData, resturentList, setResturentList }) => {
     // console.log(jsonData);
 
     //optional chaining
-    setResturentList(jsonData?.data?.cards[2]?.data?.data?.cards);
+    setRestaurentList(jsonData?.data?.cards[2]?.data?.data?.cards);
     setData(jsonData?.data?.cards[2]?.data?.data?.cards);
   };
   useEffect(() => {
@@ -23,14 +25,16 @@ const Resturant = ({ data, setData, resturentList, setResturentList }) => {
   // if (resturentList.length === 0) {
   //   return <ShimmerUi />;
   // }
-  return resturentList.length === 0 ? (
+
+
+  return restaurentList.length === 0 ? (
     <ShimmerUi />
   ) : (
     <div className="cantainer">
       <div className="card-cantainer">
         {data.map((restaurant) => {
           return (
-            <Link to={"/Resturants/"+restaurant.data.id} key={restaurant.data.id}><ResturantCard resList={restaurant}  /></Link>
+            <Link to={"/Restaurants/"+restaurant.data.id} key={restaurant.data.id}><RestaurantCard resList={restaurant}  /></Link>
           );
         })}
       </div>
@@ -38,4 +42,4 @@ const Resturant = ({ data, setData, resturentList, setResturentList }) => {
   );
 };
 
-export default Resturant;
+export default Restaurant;

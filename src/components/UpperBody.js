@@ -1,8 +1,8 @@
 import React from "react";
 
 const UpperBody = ({
-  resturentList,
-  setResturentList,
+  restaurentList,
+  setRestaurentList,
   data,
   setData,
   searchText,
@@ -16,10 +16,10 @@ const UpperBody = ({
   };
   const search = () => {
     if (searchText === "") {
-      setData(resturentList);
+      setData(restaurentList);
     } else {
       setData(
-        resturentList.filter((item) =>
+        restaurentList.filter((item) =>
           item.data.cuisines
             .map((cuisine) => cuisine.toLowerCase())
             .includes(searchText.toLowerCase())
@@ -51,13 +51,13 @@ const UpperBody = ({
               setData(data.filter((res) => res.data.avgRating >= 4));
             }}
           >
-            Top Rated Resturant
+            Top Rated Restaurant
           </button>
           <button
             type="button"
             className="filter-btn"
             onClick={() => {
-              setData(resturentList);
+              setData(restaurentList);
             }}
           >
             All

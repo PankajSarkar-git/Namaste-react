@@ -2,7 +2,7 @@ import React from "react";
 
 import { CON_URL } from "../utills/contants";
 
-const ResturantCard = ({ resList }) => {
+const RestaurantCard = ({ resList }) => {
   const {
     name,
     cuisines,
@@ -27,4 +27,4 @@ const ResturantCard = ({ resList }) => {
   );
 };
 
-export default ResturantCard;
+export default RestaurantCard;

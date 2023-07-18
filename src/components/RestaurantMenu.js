@@ -1,31 +1,47 @@
 import React, { useEffect, useState } from "react";
 import ShimmerUi from "./ShimmerUi";
+import UpperBody from "./UpperBody";
 import { CON_URL, MENU_API } from "../utills/contants";
 import { useParams } from "react-router-dom";
 import "./style.CSS";
 
-const ResturentMenu = () => {
-  const [resturantInfo, setResturantInfo] = useState(null);
-  const [filterResturant,setFilterResturant] = useState([]);
+const RestaurentMenu = () => {
+  const [restaurantInfo, setRestaurantInfo] = useState(null);
+  const [filterRestaurant, setFilterRestaurant] = useState([]);
   const { resId } = useParams();
 
   const fetchData = async () => {
-    // const data = await fetch(MENU_API + resId + "&submitAction=ENTER");
-    const data = await fetch( MENU_API+resId+"&submitAction=ENTER");
+    const data = await fetch(MENU_API + resId + "&submitAction=ENTER");
 
     const json = await data.json();
-    console.log(json);
-    setResturantInfo(json?.data);
-    setFilterResturant(json?.data);
+    setRestaurantInfo(json?.data);
+    setFilterRestaurant(
+      json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards
+    );
+    console.log(json?.data);
   };
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  if (resturantInfo === null) {
+  if (restaurantInfo === null) {
     return <ShimmerUi />;
   }
+  console.log(filterRestaurant);
+  // filter veg only
+
+  // const vagResturant = () => {
+  //   const { cards } =
+  //   filterRestaurant?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR;
+  //   setFilterRestaurant(
+  //     cards?.filter((item) =>
+  //       item?.card?.card?.itemCards?.filter(
+  //         (veg) => veg?.card?.info?.itemAttribute?.vegClassifier === "NONVEG"
+  //       )
+  //     )
+  //   );
+  // };
 
   const {
     name,
@@ -34,14 +50,16 @@ const ResturentMenu = () => {
     totalRatingsString,
     costForTwoMessage,
     locality,
-  } = resturantInfo?.cards[0]?.card?.card?.info;
+  } = restaurantInfo?.cards[0]?.card?.card?.info;
   const { offers } =
-    resturantInfo.cards[1]?.card?.card?.gridElements?.infoWithStyle;
+    restaurantInfo.cards[1]?.card?.card?.gridElements?.infoWithStyle;
 
-  const { cards } = resturantInfo.cards[2]?.groupedCard?.cardGroupMap?.REGULAR;
+  // const { cards } =
+  //   resturantInfo.cards[2]?.groupedCard?.cardGroupMap?.REGULAR;
 
   return (
     <>
+    <UpperBody/>
       <div className="main-container">
         <div className="container-card">
           <div className="container">
@@ -59,6 +77,12 @@ const ResturentMenu = () => {
           <div className="container">
             <span>{costForTwoMessage}</span>
           </div>
+          
+
+          {/* <div className="container">
+            <input type="button" value="Veg" onClick={vagResturant} />
+          </div>
+           */}
 
           <div className="container offer-container">
             {offers.map((offer, index) => {
@@ -74,28 +98,26 @@ const ResturentMenu = () => {
         </div>
 
         <div className="menu">
-          {cards.map((menuCard, index) => {
+          {filterRestaurant.map((menuCard, index) => {
             const { title, name, itemCards } = menuCard?.card?.card;
-            console.log(itemCards);
             return (
               <div className="container-card" key={index}>
                 <h1> {title || name}</h1>
-                {itemCards?.map((item, index) => {
+                {itemCards?.map((item) => {
                   const { name, imageId, id, price, description } =
                     item.card.info;
+                  <h1> {title || name}</h1>;
                   return (
-                    <>
-                      <div className="container" key={id}>
-                        <div className="right-side">
-                          <h3>{name}</h3>
-                          <p className="price">Price: {price / 100}</p>
-                          <p>{description}</p>
-                        </div>
-                        <div className="left-side">
-                          <img src={CON_URL + imageId} alt="" id="img-food" />
-                        </div>
+                    <div className="container" key={id}>
+                      <div className="right-side">
+                        <h3>{name}</h3>
+                        <p className="price">Price: {price / 100}</p>
+                        <p>{description}</p>
                       </div>
-                    </>
+                      <div className="left-side">
+                        <img src={CON_URL + imageId} alt="" id="img-food" />
+                      </div>
+                    </div>
                   );
                 })}
               </div>
@@ -107,4 +129,4 @@ const ResturentMenu = () => {
   );
 };
 
-export default ResturentMenu;
+export default RestaurentMenu;

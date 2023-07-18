@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import UpperBody from "./UpperBody";
-import Resturant from "./Resturant";
+import Resturant from "./Restaurant";
 
 const Body = () => {
-    const [resturentList, setResturentList] = useState([]);
+  const [restaurentList, setRestaurentList] = useState([]);
   const [data, setData] = useState([]);
   const [searchText, setSearchText] = useState("");
   return (
@@ -13,15 +13,15 @@ const Body = () => {
         searchText={searchText}
         data={data}
         setData={setData}
-        resturentList={resturentList}
-        setResturentList={setResturentList}
+        restaurentList={restaurentList}
+        setRestaurentList={setRestaurentList}
       />
       <Resturant
         setSearchText={setSearchText}
         searchText={searchText}
         data={data}
-        resturentList={resturentList}
-        setResturentList={setResturentList}
+        restaurentList={restaurentList}
+        setRestaurentList={setRestaurentList}
         setData={setData}
       />
     </div>
