@@ -1,28 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect,useState } from "react";
 import UpperBody from "./UpperBody";
 import Resturant from "./Restaurant";
+import useRestaurant from "../utills/useRestaurant";
+
+  
 
 const Body = () => {
+  const data = useRestaurant();
   const [restaurentList, setRestaurentList] = useState([]);
-  const [data, setData] = useState([]);
-  const [searchText, setSearchText] = useState("");
+  // setRestaurentList(data)
+  // console.log(data);
+  // const data = useRestaurant();
+
   return (
     <div>
       <UpperBody
-        setSearchText={setSearchText}
-        searchText={searchText}
-        data={data}
-        setData={setData}
         restaurentList={restaurentList}
         setRestaurentList={setRestaurentList}
       />
       <Resturant
-        setSearchText={setSearchText}
-        searchText={searchText}
-        data={data}
         restaurentList={restaurentList}
         setRestaurentList={setRestaurentList}
-        setData={setData}
       />
     </div>
   );

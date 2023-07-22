@@ -1,30 +1,28 @@
-import React from "react";
+import React,{useState} from "react";
+import useRestaurant from "../utills/useRestaurant";
 
-const UpperBody = ({
-  restaurentList,
-  setRestaurentList,
-  data,
-  setData,
-  searchText,
-  setSearchText,
-}) => {
+const UpperBody = ({ restaurentList, setRestaurentList }) => {
+  const [searchText, setSearchText] = useState("");
+
+  const data = useRestaurant();
+  
   const inputData = (e) => {
     const input = e.target.value;
     const search = input.charAt(0).toUpperCase() + input.slice(1);
-    console.log(search);
     setSearchText(search);
   };
   const search = () => {
     if (searchText === "") {
-      setData(restaurentList);
+      setRestaurentList(data);
     } else {
-      setData(
-        restaurentList.filter((item) =>
+      setRestaurentList(
+        data.filter((item) =>
           item.data.cuisines
             .map((cuisine) => cuisine.toLowerCase())
             .includes(searchText.toLowerCase())
         )
       );
+      
     }
   };
   return (
@@ -48,7 +46,9 @@ const UpperBody = ({
             type="button"
             className="filter-btn"
             onClick={() => {
-              setData(data.filter((res) => res.data.avgRating >= 4));
+              setRestaurentList(
+                 restaurentList.filter((res) => res.data.avgRating >= 4)
+              );
             }}
           >
             Top Rated Restaurant
@@ -57,7 +57,7 @@ const UpperBody = ({
             type="button"
             className="filter-btn"
             onClick={() => {
-              setData(restaurentList);
+              setRestaurentList(data);
             }}
           >
             All

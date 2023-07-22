@@ -1,48 +1,17 @@
-import React, { useEffect, useState } from "react";
 import ShimmerUi from "./ShimmerUi";
 import UpperBody from "./UpperBody";
 import { CON_URL, MENU_API } from "../utills/contants";
 import { useParams } from "react-router-dom";
+import useRestaurentMenu from "../utills/useRestaurantMenu";
 import "./style.CSS";
 
 const RestaurentMenu = () => {
-  const [restaurantInfo, setRestaurantInfo] = useState(null);
-  const [filterRestaurant, setFilterRestaurant] = useState([]);
   const { resId } = useParams();
-
-  const fetchData = async () => {
-    const data = await fetch(MENU_API + resId + "&submitAction=ENTER");
-
-    const json = await data.json();
-    setRestaurantInfo(json?.data);
-    setFilterRestaurant(
-      json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards
-    );
-    console.log(json?.data);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
+  const restaurantInfo = useRestaurentMenu(resId);
   if (restaurantInfo === null) {
     return <ShimmerUi />;
   }
-  console.log(filterRestaurant);
-  // filter veg only
-
-  // const vagResturant = () => {
-  //   const { cards } =
-  //   filterRestaurant?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR;
-  //   setFilterRestaurant(
-  //     cards?.filter((item) =>
-  //       item?.card?.card?.itemCards?.filter(
-  //         (veg) => veg?.card?.info?.itemAttribute?.vegClassifier === "NONVEG"
-  //       )
-  //     )
-  //   );
-  // };
-
+ 
   const {
     name,
     cuisines,
@@ -54,12 +23,11 @@ const RestaurentMenu = () => {
   const { offers } =
     restaurantInfo.cards[1]?.card?.card?.gridElements?.infoWithStyle;
 
-  // const { cards } =
-  //   resturantInfo.cards[2]?.groupedCard?.cardGroupMap?.REGULAR;
-
+  const { cards } =
+    restaurantInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR;
   return (
     <>
-    <UpperBody/>
+      <UpperBody />
       <div className="main-container">
         <div className="container-card">
           <div className="container">
@@ -77,12 +45,6 @@ const RestaurentMenu = () => {
           <div className="container">
             <span>{costForTwoMessage}</span>
           </div>
-          
-
-          {/* <div className="container">
-            <input type="button" value="Veg" onClick={vagResturant} />
-          </div>
-           */}
 
           <div className="container offer-container">
             {offers.map((offer, index) => {
@@ -98,7 +60,7 @@ const RestaurentMenu = () => {
         </div>
 
         <div className="menu">
-          {filterRestaurant.map((menuCard, index) => {
+          {cards?.map((menuCard, index) => {
             const { title, name, itemCards } = menuCard?.card?.card;
             return (
               <div className="container-card" key={index}>
