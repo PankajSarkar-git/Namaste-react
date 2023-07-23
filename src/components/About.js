@@ -1,7 +1,7 @@
 import { Component } from "react";
 import User from "./User";
 import UserClass from "./UserClass";
-import "./style.CSS";
+// import "./style.CSS";
 
 class About extends Component {
   constructor(props) {

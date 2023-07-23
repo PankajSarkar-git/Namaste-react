@@ -1,11 +1,11 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import useRestaurant from "../utills/useRestaurant";
 
 const UpperBody = ({ restaurentList, setRestaurentList }) => {
   const [searchText, setSearchText] = useState("");
 
   const data = useRestaurant();
-  
+
   const inputData = (e) => {
     const input = e.target.value;
     const search = input.charAt(0).toUpperCase() + input.slice(1);
@@ -22,14 +22,14 @@ const UpperBody = ({ restaurentList, setRestaurentList }) => {
             .includes(searchText.toLowerCase())
         )
       );
-      
     }
   };
   return (
     <div>
-      <div className="funtion-container">
-        <div className="search">
+      <div className="p-4 m-4 flex items-center justify-between">
+        <div className="">
           <input
+            className="border border-solid border-black w-96 h-10"
             type="text"
             name=""
             id=""
@@ -37,17 +37,17 @@ const UpperBody = ({ restaurentList, setRestaurentList }) => {
             value={searchText}
             onChange={inputData}
           />
-          <button type="submit" onClick={search}>
+          <button type="submit" onClick={search} className="px-8 py-2 rounded-e-lg bg-blue-400 my-4   ">
             Search
           </button>
         </div>
-        <div className="options">
+        <div className="flex items-center">
           <button
             type="button"
-            className="filter-btn"
+            className=" bg-blue-500 py-2 px-10 rounded-lg mx-28"
             onClick={() => {
               setRestaurentList(
-                 restaurentList.filter((res) => res.data.avgRating >= 4)
+                restaurentList.filter((res) => res.data.avgRating >= 4)
               );
             }}
           >
@@ -55,7 +55,7 @@ const UpperBody = ({ restaurentList, setRestaurentList }) => {
           </button>
           <button
             type="button"
-            className="filter-btn"
+            className="  bg-blue-500 py-2 px-10 rounded-lg mr-24"
             onClick={() => {
               setRestaurentList(data);
             }}

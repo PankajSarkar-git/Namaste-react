@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./style.CSS";
+// import "./style.CSS";
 
 const User = (props) => {
     console.log("render");

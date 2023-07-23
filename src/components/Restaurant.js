@@ -40,8 +40,8 @@ const Restaurant = ({  restaurentList, setRestaurentList }) => {
   return restaurentList.length === 0 ? (
     <ShimmerUi />
   ) : (
-    <div className="cantainer">
-      <div className="card-cantainer">
+    <div className=" flex flex-wrap flex-row">
+      <div className="flex flex-wrap flex-row justify-center">
         {restaurentList.map((restaurant) => {
           return (
             <Link
