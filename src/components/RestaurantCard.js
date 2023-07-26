@@ -29,4 +29,19 @@ const RestaurantCard = ({ resList }) => {
   );
 };
 
+
+// higher oder component 
+
+
+export const withPromotedLabel = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div>
+        <label className="absolute mx-4 my-2 p-2 bg-black text-white rounded-e-lg" >Promoted</label>
+        <RestaurantCard {...props}/>
+      </div>
+    )
+  }
+}
+
 export default RestaurantCard;
