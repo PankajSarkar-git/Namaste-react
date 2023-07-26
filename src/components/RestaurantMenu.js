@@ -5,9 +5,11 @@ import { useParams } from "react-router-dom";
 import useRestaurentMenu from "../utills/useRestaurantMenu";
 import RestaurentCategory from "./RestaurantCategory";
 import Offers from "./Offers";
+import { useState } from "react";
 // import "./style.CSS";
 
 const RestaurentMenu = () => {
+  const [showIndex, setShowIndex] = useState(0);
   const { resId } = useParams();
   const restaurantInfo = useRestaurentMenu(resId);
   if (restaurantInfo === null) {
@@ -70,7 +72,13 @@ const RestaurentMenu = () => {
         <div className="menu">
           {categories.map((category, index) => {
             return (
-              <RestaurentCategory key={category?.card?.card?.title} data={category?.card?.card} />
+              <RestaurentCategory
+                key={category?.card?.card?.title}
+                data={category?.card?.card}
+                showItems={index === showIndex ? true : false}
+                setShowIndex={() => {setShowIndex(index)}}
+                // index={index}
+              />
             );
           })}
         </div>

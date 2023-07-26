@@ -1,15 +1,18 @@
 import React, {useState} from "react";
 import ItemList from "./ItemList";
 
-const RestaurentCategory = ({ data }) => {
-  const [showItem , setShowItem] = useState(false);
+const RestaurentCategory = ({ data, setShowIndex ,showItems , /*index*/ }) => {
+  // const [showItem , setShowItem] = useState(false);
   // console.log(data);
   const { title, itemCards } = data;
 
 
   function hideAndShow() {
     // console.log('clicked');
-    setShowItem(!showItem)
+    // setShowItem(!showItem)
+    // setShowIndex(index);
+    // setShowIndex(index);
+    setShowIndex();
   }
   return (
     <>
@@ -19,10 +22,10 @@ const RestaurentCategory = ({ data }) => {
           <span className="text-2xl font-bold pb-3">
             {title} ({itemCards.length})
           </span>
-          <span className={showItem ? "rotate-180 pb-6 text-2xl" : "rotate-0 text-2xl"}>🔻</span>
+          <span className={showItems ? "rotate-180 pb-6 text-2xl" : "rotate-0 text-2xl"}>🔻</span>
         </div>
         <div>
-          {showItem &&<ItemList itemCards={itemCards} />}
+          {showItems &&<ItemList itemCards={itemCards} />}
         </div>
 
         {/* Accordion body */}
