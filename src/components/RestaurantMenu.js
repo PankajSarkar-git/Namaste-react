@@ -1,6 +1,4 @@
 import ShimmerUi from "./ShimmerUi";
-import UpperBody from "./UpperBody";
-import { CON_URL, MENU_API } from "../utills/contants";
 import { useParams } from "react-router-dom";
 import useRestaurentMenu from "../utills/useRestaurantMenu";
 import RestaurentCategory from "./RestaurantCategory";
@@ -9,7 +7,7 @@ import { useState } from "react";
 // import "./style.CSS";
 
 const RestaurentMenu = () => {
-  const [showIndex, setShowIndex] = useState(0);
+  const [showIndex, setShowIndex] = useState(null);
   const { resId } = useParams();
   const restaurantInfo = useRestaurentMenu(resId);
   if (restaurantInfo === null) {
@@ -39,7 +37,7 @@ const RestaurentMenu = () => {
       "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
   );
 
-  console.log(categories);
+  // console.log(categories);
 
   return (
     <>
@@ -76,8 +74,9 @@ const RestaurentMenu = () => {
                 key={category?.card?.card?.title}
                 data={category?.card?.card}
                 showItems={index === showIndex ? true : false}
-                setShowIndex={() => {setShowIndex(index)}}
-                // index={index}
+                setShowIndex={setShowIndex}
+                index={index}
+                showIndex={showIndex}
               />
             );
           })}

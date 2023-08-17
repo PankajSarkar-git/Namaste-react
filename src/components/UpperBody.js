@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import useRestaurant from "../utills/useRestaurant";
+import UserContext from "../utills/UserContext";
 
 const UpperBody = ({ restaurentList, setRestaurentList }) => {
   const [searchText, setSearchText] = useState("");
+  const {setUserName,loggedinUser} = useContext(UserContext);
 
   const data = useRestaurant();
 
@@ -17,7 +19,7 @@ const UpperBody = ({ restaurentList, setRestaurentList }) => {
     } else {
       setRestaurentList(
         data.filter((item) =>
-          item.data.cuisines
+          item.info.cuisines
             .map((cuisine) => cuisine.toLowerCase())
             .includes(searchText.toLowerCase())
         )
@@ -47,7 +49,7 @@ const UpperBody = ({ restaurentList, setRestaurentList }) => {
             className=" bg-blue-500 py-2 px-10 rounded-lg mx-28"
             onClick={() => {
               setRestaurentList(
-                restaurentList.filter((res) => res.data.avgRating >= 4)
+                restaurentList.filter((res) => res.info.avgRating >= 4.5)
               );
             }}
           >
@@ -62,6 +64,14 @@ const UpperBody = ({ restaurentList, setRestaurentList }) => {
           >
             All
           </button>
+
+          <div>
+          <label>User Name: </label>
+            <input type="text" className="border border-solid border-black w-48 h-8" value={loggedinUser} onChange={(e)=>{
+              const  value = e.target.value;
+              setUserName(value)
+            }}/>
+          </div>
         </div>
       </div>
     </div>

@@ -1,5 +1,6 @@
-import React, { lazy , Suspense} from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
+
 import Header from "./components/Header";
 import About from "./components/About";
 import Contact from "./components/Contact";
@@ -7,6 +8,8 @@ import Errors from "./components/Errors";
 import Body from "./components/Body";
 import RestaurantMenu from "./components/RestaurantMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import UserContext from "./utills/UserContext";
+
 
 
 // chunking
@@ -14,16 +17,24 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 // dynamics bundling
 // lazy loading
 // on demand loading
-// dynamix import 
+// dynamix import
 
-
-const Grocery = lazy(()=> import("./components/Grocery"));
+const Grocery = lazy(() => import("./components/Grocery"));
 const AppLayOut = () => {
+  const [userName, setUserName] = useState();
+  useEffect(() => {
+    const data = {
+      name: "Pankaj Sarkar",
+    };
+    setUserName(data.name);
+  }, []);
   return (
-    <div className="app">
-      <Header />
-      <Outlet />
-    </div>
+    <UserContext.Provider value={{loggedinUser: userName ,setUserName}}>
+      <div className="app">
+        <Header />
+        <Outlet />
+      </div>
+       </UserContext.Provider>
   );
 };
 
@@ -46,7 +57,17 @@ const routApp = createBrowserRouter([
       },
       {
         path: "/grocery",
-        element: <Suspense fallback={<><h1>Loading......</h1></>}><Grocery /></Suspense>,
+        element: (
+          <Suspense
+            fallback={
+              <>
+                <h1>Loading......</h1>
+              </>
+            }
+          >
+            <Grocery />
+          </Suspense>
+        ),
       },
       {
         path: "/Restaurants/:resId",

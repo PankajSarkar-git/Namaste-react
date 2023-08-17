@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import ItemList from "./ItemList";
 
-const RestaurentCategory = ({ data, setShowIndex ,showItems , /*index*/ }) => {
+const RestaurentCategory = ({ data, setShowIndex ,showItems , index,showIndex }) => {
   // const [showItem , setShowItem] = useState(false);
   // console.log(data);
   const { title, itemCards } = data;
@@ -10,9 +10,7 @@ const RestaurentCategory = ({ data, setShowIndex ,showItems , /*index*/ }) => {
   function hideAndShow() {
     // console.log('clicked');
     // setShowItem(!showItem)
-    // setShowIndex(index);
-    // setShowIndex(index);
-    setShowIndex();
+    setShowIndex(!showIndex ? index : null );
   }
   return (
     <>

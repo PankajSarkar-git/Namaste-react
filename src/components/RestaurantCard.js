@@ -10,7 +10,7 @@ const RestaurantCard = ({ resList }) => {
     deliveryTime,
     costForTwo,
     cloudinaryImageId,
-  } = resList?.data;
+  } = resList?.info;
   return (
     <div className=" h-fit  w-80 p-2 border border-solid border-red-700 m-4 rounded-lg bg-gray-100 hover:bg-gray-200 ">
       <img

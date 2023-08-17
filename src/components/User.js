@@ -8,17 +8,17 @@ const User = (props) => {
     const { name, location } = props;
 
 
-    useEffect(() => {
-    const timer =  setInterval(() => {
-        console.log("fhgfgfg");
-      }, 1000);
-    console.log("useEffect");
+    // useEffect(() => {
+    // const timer =  setInterval(() => {
+    //     console.log("fhgfgfg");
+    //   }, 1000);
+    // console.log("useEffect");
 
-      return () => {
-        clearInterval(timer)
-        console.log("Unmount");
-      }
-    }, []);
+    //   return () => {
+    //     clearInterval(timer)
+    //     console.log("Unmount");
+    //   }
+    // }, []);
   return (
     <div className="user-card">
       <h1>count : {count}</h1>

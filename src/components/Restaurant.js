@@ -6,7 +6,7 @@ import useOnlineStatus from "../utills/useOnlineStatus";
 
 const Restaurant = ({ restaurentList, setRestaurentList }) => {
   const [data, setData] = useState([]);
-
+  // console.log(restaurentList);
   // higher oder component
 
   const Promotedrestaurantcar = withPromotedLabel(RestaurantCard);
@@ -19,10 +19,12 @@ const Restaurant = ({ restaurentList, setRestaurentList }) => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.572646&lng=88.36389500000001&page_type=DESKTOP_WEB_LISTING"
     );
     const jsonData = await data.json();
-
+    // console.log(jsonData);
     //optional chaining
-    setData(jsonData?.data?.cards[2]?.data?.data?.cards);
-    setRestaurentList(jsonData?.data?.cards[2]?.data?.data?.cards);
+    // setData(jsonData?.data?.cards[2]?.data?.data?.cards);
+    setData(jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+   setRestaurentList(jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    
   };
 
   // conditional Rendering
@@ -34,7 +36,7 @@ const Restaurant = ({ restaurentList, setRestaurentList }) => {
   if (onlineStatus === false) {
     return <h1>You are Offline check your internet connection!</h1>;
   }
-  // console.log(restaurentList);
+  console.log(restaurentList);
 
   return restaurentList.length === 0 ? (
     <ShimmerUi />
@@ -44,11 +46,11 @@ const Restaurant = ({ restaurentList, setRestaurentList }) => {
         {restaurentList.map((restaurant) => {
           return (
             <Link
-              to={"/Restaurants/" + restaurant.data.id}
-              key={restaurant.data.id}
+              to={"/Restaurants/" + restaurant.info.id}
+              key={restaurant.info.id}
             >
-              {restaurant.data.promoted ? (
-                <Promotedrestaurantcar resList={restaurant}/>
+              {restaurant.info.promoted ? (
+                <Promotedrestaurantcar resList={restaurant} />
               ) : (
                 <RestaurantCard resList={restaurant} />
               )}
