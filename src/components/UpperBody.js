@@ -13,7 +13,8 @@ const UpperBody = ({ restaurentList, setRestaurentList }) => {
     const search = input.charAt(0).toUpperCase() + input.slice(1);
     setSearchText(search);
   };
-  const search = () => {
+  const search = (e) => {
+    e.preventDefault()
     if (searchText === "") {
       setRestaurentList(data);
     } else {
@@ -29,7 +30,7 @@ const UpperBody = ({ restaurentList, setRestaurentList }) => {
   return (
     <div>
       <div className="p-4 m-4 flex items-center justify-between">
-        <div className="">
+        <form className="">
           <input
             className="border border-solid border-black w-96 h-10"
             type="text"
@@ -42,7 +43,7 @@ const UpperBody = ({ restaurentList, setRestaurentList }) => {
           <button type="submit" onClick={search} className="px-8 py-2 rounded-e-lg bg-blue-400 my-4   ">
             Search
           </button>
-        </div>
+        </form>
         <div className="flex items-center">
           <button
             type="button"

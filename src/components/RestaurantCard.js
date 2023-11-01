@@ -11,6 +11,7 @@ const RestaurantCard = ({ resList }) => {
     costForTwo,
     cloudinaryImageId,
   } = resList?.info;
+  // console.log(resList);
   return (
     <div className=" h-fit  w-80 p-2 border border-solid border-red-700 m-4 rounded-lg bg-gray-100 hover:bg-gray-200 ">
       <img
@@ -23,7 +24,7 @@ const RestaurantCard = ({ resList }) => {
       <h3>{cuisines.join(" , ")}</h3>
       <h3 className={ avgRating >= 3.7 ? "text-green-700" :"text-red-500" } >{avgRating}⭐</h3>
       <h3> {deliveryTime} Minutes</h3>
-      <h3>₹ {costForTwo / 100} FOR TWO</h3>
+      <h3>{/*₹*/} {costForTwo }</h3>
       </div>
     </div>
   );

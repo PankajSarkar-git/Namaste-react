@@ -23,7 +23,7 @@ const RestaurentCategory = ({ data, setShowIndex ,showItems , index,showIndex })
           <span className={showItems ? "rotate-180 pb-6 text-2xl" : "rotate-0 text-2xl"}>🔻</span>
         </div>
         <div>
-          {showItems &&<ItemList itemCards={itemCards} />}
+          {showItems &&<ItemList items={itemCards} cartName={"ADD +"} />}
         </div>
 
         {/* Accordion body */}

@@ -2,12 +2,12 @@
 import { CON_URL } from "../utills/contants";
 import CardButton from "./CardButton";
 
-const ItemList = ({ itemCards }) => {
+const ItemList = ({ items, cartName }) => {
   // console.log(itemCards);
   return (
-    <div>
-      {itemCards.map((i) => {
-        const { name, price, id, description, imageId } = i?.card?.info;
+    <div className="">
+      {items.map((item , index) => {
+        const { name, price, id, description, imageId } = item?.card?.info;
         return (
           <div
             key={id}
@@ -20,9 +20,9 @@ const ItemList = ({ itemCards }) => {
               </span>
               <p className="text-lg my-3">{description}</p>
             </div>
-            <div className="relative flex items-center">
+            <div className="relative flex items-center ">
               <img className="w-48 p-2" src={CON_URL + imageId} />
-              <CardButton />
+              <CardButton item={item} name={cartName} index={index} />
             </div>
           </div>
         );

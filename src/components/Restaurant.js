@@ -21,10 +21,14 @@ const Restaurant = ({ restaurentList, setRestaurentList }) => {
     const jsonData = await data.json();
     // console.log(jsonData);
     //optional chaining
-    // setData(jsonData?.data?.cards[2]?.data?.data?.cards);
-    setData(jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-   setRestaurentList(jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-    
+    setData(
+      jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
+    setRestaurentList(
+      jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+        ?.restaurants
+    );
   };
 
   // conditional Rendering
@@ -36,29 +40,31 @@ const Restaurant = ({ restaurentList, setRestaurentList }) => {
   if (onlineStatus === false) {
     return <h1>You are Offline check your internet connection!</h1>;
   }
-  console.log(restaurentList);
+  // console.log(restaurentHead);
 
   return restaurentList.length === 0 ? (
     <ShimmerUi />
   ) : (
-    <div className=" flex flex-wrap flex-row">
-      <div className="flex flex-wrap flex-row justify-center">
-        {restaurentList.map((restaurant) => {
-          return (
-            <Link
-              to={"/Restaurants/" + restaurant.info.id}
-              key={restaurant.info.id}
-            >
-              {restaurant.info.promoted ? (
-                <Promotedrestaurantcar resList={restaurant} />
-              ) : (
-                <RestaurantCard resList={restaurant} />
-              )}
-            </Link>
-          );
-        })}
+    <>
+      <div className=" flex flex-wrap flex-row">
+        <div className="flex flex-wrap flex-row justify-center">
+          {restaurentList.map((restaurant) => {
+            return (
+              <Link
+                to={"/Restaurants/" + restaurant.info.id}
+                key={restaurant.info.id}
+              >
+                {restaurant.info.promoted ? (
+                  <Promotedrestaurantcar resList={restaurant} />
+                ) : (
+                  <RestaurantCard resList={restaurant} />
+                )}
+              </Link>
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

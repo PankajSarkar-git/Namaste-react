@@ -13,7 +13,7 @@ const RestaurentMenu = () => {
   if (restaurantInfo === null) {
     return <ShimmerUi />;
   }
-
+// console.log(restaurantInfo);
   const {
     name,
     cuisines,
