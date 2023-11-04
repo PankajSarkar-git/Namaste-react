@@ -22,11 +22,11 @@ const Restaurant = ({ restaurentList, setRestaurentList }) => {
     // console.log(jsonData);
     //optional chaining
     setData(
-      jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+      jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
     setRestaurentList(
-      jsonData?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+      jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
   };
@@ -57,7 +57,7 @@ const Restaurant = ({ restaurentList, setRestaurentList }) => {
                 {restaurant.info.promoted ? (
                   <Promotedrestaurantcar resList={restaurant} />
                 ) : (
-                  <RestaurantCard resList={restaurant} />
+                  <RestaurantCard resList={restaurant?.info} />
                 )}
               </Link>
             );

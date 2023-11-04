@@ -32,6 +32,7 @@ const UpperBody = ({ restaurentList, setRestaurentList }) => {
       <div className="p-4 m-4 flex items-center justify-between">
         <form className="">
           <input
+          data-testid = "searchInput"
             className="border border-solid border-black w-96 h-10"
             type="text"
             name=""
