@@ -12,6 +12,7 @@ const ItemList = ({ items, cartName }) => {
           <div
             key={id}
             className="  border-x border-solid border-black border-b flex justify-between px-3"
+            data-testid = "food-items"
           >
             <div className="w-8/12">
               <span className="text-xl block my-3 font-bold">{name}</span>

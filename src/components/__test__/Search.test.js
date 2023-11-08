@@ -30,7 +30,7 @@ test("should search resturent list for American text Input", async () => {
   const card = screen.getAllByTestId("testCardDiv");
   expect(card.length).toBe(3);
 });
-test("should search resturent list for American text Input", async () => {
+test("should render Top Rated Restaurant", async () => {
   await act(async () =>
     render(
       <BrowserRouter>
